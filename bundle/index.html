@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta name="description" content="Prosemirror playground" />
+    <meta charset="utf-8" />
+    <title>Change_me</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="author" content="" />
+    <link rel=stylesheet href="https://prosemirror.net/css/editor.css">
+    <script src="prosemirror-bundle.min.js"></script>
+  </head>
+
+  <body>
+    <div id="editor" style="margin-bottom: 23px"></div>
+
+    <div style="display: none" id="content">
+      <h3>Hello ProseMirror</h3>
+    
+      <p>This is editable text. You can focus it and start typing.</p>
+    
+      <p>To apply styling, you can select a piece of text and manipulate
+      its styling from the menu. The basic schema
+      supports <em>emphasis</em>, <strong>strong
+      text</strong>, <a href="http://marijnhaverbeke.nl/blog">links</a>, <code>code
+      font</code>, and <img src="/img/smiley.png"> images.</p>
+    
+      <p>Block-level structure can be manipulated with key bindings (try
+      ctrl-shift-2 to create a level 2 heading, or enter in an empty
+      textblock to exit the parent block), or through the menu.</p>
+    
+      <p>Try using the “list” item in the menu to wrap this paragraph in
+      a numbered list.</p>
+    </div>
+
+    <script>
+      // Mix the nodes from prosemirror-schema-list into the basic schema to
+      // create a schema with list support.
+      var mySchema = new proseMirrorBundle.Schema({
+        nodes: proseMirrorBundle.addListNodes(proseMirrorBundle.schema.spec.nodes, "paragraph block*", "block"),
+        marks: proseMirrorBundle.schema.spec.marks,
+      });
+
+      //window.view = new proseMirrorBundle.EditorView(document.querySelector("#editor"), {
+      window.aaaa = new proseMirrorBundle.EditorView(document.querySelector("#editor"), {
+        state: proseMirrorBundle.EditorState.create({
+          doc: proseMirrorBundle.DOMParser.fromSchema(mySchema).parse(
+            document.querySelector("#content")
+          ),
+          plugins: proseMirrorBundle.exampleSetup({ schema: mySchema }),
+        }),
+      });
+    </script>
+  </body>
+</html>

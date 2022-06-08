@@ -1,11 +1,14 @@
 import {keymap} from "prosemirror-keymap"
 import {history} from "prosemirror-history"
 import {baseKeymap} from "prosemirror-commands"
-import {Plugin} from "prosemirror-state"
+import {Plugin, EditorState} from "prosemirror-state"
 import {dropCursor} from "prosemirror-dropcursor"
 import {gapCursor} from "prosemirror-gapcursor"
 import {menuBar, MenuItem} from "prosemirror-menu"
-import {Schema} from "prosemirror-model"
+import {Schema, DOMParser} from "prosemirror-model"
+import {EditorView} from "prosemirror-view"
+import {addListNodes} from "prosemirror-schema-list"
+import {schema} from "prosemirror-schema-basic"
 
 import {buildMenuItems} from "./menu"
 import {buildKeymap} from "./keymap"
@@ -77,3 +80,5 @@ export function exampleSetup(options: {
     }
   }))
 }
+
+export { Schema, EditorView, EditorState, DOMParser, addListNodes, schema };
