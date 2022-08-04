@@ -13,7 +13,9 @@
     },
     "./style/style.css": "./style/style.css"
   },
-  "sideEffects": ["./style/style.css"],
+  "sideEffects": [
+    "./style/style.css"
+  ],
   "style": "style/style.css",
   "license": "MIT",
   "maintainers": [
@@ -46,6 +48,7 @@
     "rollup": "^2.75.6",
     "rollup-plugin-terser": "^7.0.2",
     "terser": "^5.14.0",
+    "tslib": "^2.4.0",
     "typescript": "^4.7.3"
   },
   "scripts": {
